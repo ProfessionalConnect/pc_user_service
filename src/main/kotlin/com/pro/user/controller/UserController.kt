@@ -21,7 +21,7 @@ class UserController {
     @Autowired
     private lateinit var userService: UserService
 
-    @PostMapping("/members/signup")
+    @PostMapping("/ss/signup")
     fun memberSignUp(
         @RequestBody userRequest: UserRequest
     ): ResponseEntity<Void> {
@@ -29,7 +29,7 @@ class UserController {
         return ResponseEntity.created(URI("/api/v1/users/${userId}")).build()
     }
 
-    @PostMapping("/pros/signup")
+    @PostMapping("/ps/signup")
     fun proSignUp(
         @RequestBody userRequest: UserRequest
     ): ResponseEntity<Void> {
