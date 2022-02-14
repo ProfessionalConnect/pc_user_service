@@ -33,7 +33,8 @@ class UserServiceImplement: UserService {
             return TokenResponse(
                 jwtTokenProvider.createAccessToken(user.uuid, user.userRole.name),
                 jwtTokenProvider.createRefreshToken(),
-                user.uuid
+                user.uuid,
+                user.userRole.name
             )
         }
 
@@ -55,7 +56,8 @@ class UserServiceImplement: UserService {
         return TokenResponse(
             jwtTokenProvider.createAccessToken(user.uuid, user.userRole.name),
             jwtTokenProvider.createRefreshToken(),
-            user.uuid
+            user.uuid,
+            user.userRole.name
         )
     }
 }

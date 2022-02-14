@@ -7,5 +7,6 @@ data class TokenResponse(
     val accessToken: String,
     val refreshToken: String,
     val uuid: String,
+    val userRole: String,
 ) {
 }
