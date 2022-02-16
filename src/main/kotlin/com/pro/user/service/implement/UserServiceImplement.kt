@@ -1,10 +1,7 @@
 package com.pro.user.service.implement
 
 import com.pro.user.domain.UserRole
-import com.pro.user.dto.AuthenticationRequest
-import com.pro.user.dto.RefreshRequest
-import com.pro.user.dto.TokenResponse
-import com.pro.user.dto.UserRequest
+import com.pro.user.dto.*
 import com.pro.user.exception.custom.NotFoundEmailException
 import com.pro.user.exception.custom.NotFoundPasswordException
 import com.pro.user.exception.custom.NotFoundUserException
@@ -60,4 +57,8 @@ class UserServiceImplement: UserService {
             user.userRole.name
         )
     }
+
+    override fun getUsersByUuid(detailRequests: List<DetailRequest>): List<DetailResponse> =
+        DetailResponse.listOf(userRepository.findByUuidIn(
+            detailRequests.map(DetailRequest::of)))
 }

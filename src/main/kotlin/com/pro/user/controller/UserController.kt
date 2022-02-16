@@ -1,10 +1,7 @@
 package com.pro.user.controller
 
 import com.pro.user.domain.UserRole
-import com.pro.user.dto.AuthenticationRequest
-import com.pro.user.dto.RefreshRequest
-import com.pro.user.dto.TokenResponse
-import com.pro.user.dto.UserRequest
+import com.pro.user.dto.*
 import com.pro.user.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -48,4 +45,11 @@ class UserController {
         @RequestBody refreshRequest: RefreshRequest
     ): ResponseEntity<TokenResponse> =
         ResponseEntity.ok().body(userService.refresh(refreshRequest))
+
+
+    @PostMapping("/details")
+    fun getUsersByUuid(
+        @RequestBody detailRequests: List<DetailRequest>
+    ): ResponseEntity<List<DetailResponse>> =
+        ResponseEntity.ok().body(userService.getUsersByUuid(detailRequests))
 }
